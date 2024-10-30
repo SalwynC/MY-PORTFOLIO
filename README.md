@@ -23,7 +23,7 @@ To set up the project locally:
 Clone the repository:
 bash
 Copy code
-git clone https://github.com/yourusername/your-repo.git
+git clone https://github.com/SalwynC/my-portfolio
 Open the index.html file in your browser to view the portfolio! 🌟
 
 
