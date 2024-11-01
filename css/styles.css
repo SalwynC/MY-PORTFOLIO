@@ -314,3 +314,33 @@ body.dark-mode .list-group-item:hover {
 [data-aos].aos-animate {
     opacity: 1;
 }
+
+/* Default Light Mode Styles */
+body {
+    background-color: #ffffff; /* Light background */
+    color: #000000; /* Dark text */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* Light text */
+}
+
+.navbar {
+    background-color: #007bff; /* Light mode navbar */
+}
+
+body.dark-mode .navbar {
+    background-color: #e6dddd; /* Dark mode navbar */
+}
+
+/* Additional styles for buttons, links, etc. */
+.btn {
+    background-color: #007bff; /* Light mode button */
+    color: #ffffff;
+}
+
+body.dark-mode .btn {
+    background-color: #0056b3; /* Dark mode button */
+}

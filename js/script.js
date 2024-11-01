@@ -20,9 +20,13 @@ $(document).ready(function() {
 
     // Dark/Light Mode Toggle
     $('#theme-toggle').on('click', function() {
-        $('body').toggleClass('dark-mode');
+        $('body').toggleClass('🌙');
         // Change button text based on current mode
-        $(this).text($(this).text() === '🌙' ? '☀️' : '🌙'); 
+        if ($('body').hasClass('🌙')) {
+            $(this).text('☀️');
+        } else {
+            $(this).text('🌙');
+        }
     });
 
     // Highlight active section in navbar
