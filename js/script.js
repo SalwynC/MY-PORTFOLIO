@@ -20,12 +20,12 @@ $(document).ready(function() {
 
     // Dark/Light Mode Toggle
     $('#theme-toggle').on('click', function() {
-        $('body').toggleClass('🌙');
+        $('body').toggleClass('dark-mode'); // Toggle dark mode class
         // Change button text based on current mode
-        if ($('body').hasClass('🌙')) {
-            $(this).text('☀️');
+        if ($('body').hasClass('dark-mode')) {
+            $(this).text('☀️'); // Change to sun emoji for light mode
         } else {
-            $(this).text('🌙');
+            $(this).text('🌙'); // Change to moon emoji for dark mode
         }
     });
 
@@ -84,5 +84,14 @@ $(document).ready(function() {
     // Optional: Handle click event for the contact button
     $('#contactButton').on('click', function() {
         alert('Please fill in your details, and I will get back to you shortly!'); 
+    });
+
+    // Smooth scrolling for navigation links
+    $('.nav-link').on('click', function(event) {
+        event.preventDefault(); // Prevent default anchor click behavior
+        var target = $(this).attr('href'); // Get the target section
+        $('html, body').animate({
+            scrollTop: $(target).offset().top // Scroll to the target section
+        }, 800); // Duration of the scroll
     });
 });
