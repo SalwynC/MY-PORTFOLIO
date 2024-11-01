@@ -237,7 +237,18 @@ body.dark-mode .list-group-item:hover {
 #theme-toggle:hover {
     transform: scale(1.1);
 }
-/* Placeholder for future styles */
+/* Styles for the contact form button */
+#contact .btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#contact .btn-primary:hover {
+    background-color: var(--secondary-color);
+}
 /* Hobbies and Skills Section Styles */
 #skills.dark-mode, #hobbies.dark-mode {
     background-color: #181616;

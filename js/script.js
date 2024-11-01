@@ -45,53 +45,36 @@ $(document).ready(function() {
     });
 
     // Contact Form Submission
-    $('#contact-form').on('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        // Get form values
-        var name = $('#name').val();
-        var email = $('#email').val();
-        var message = $('#message').val();
-
-        // Send email using EmailJS
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-            name: name,
-            email: email,
-            message: message
-        })
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            alert('Your message has been sent successfully!');
-            $('#contact-form').trigger('reset'); // Reset the form
-        }, function(error) {
-            console.log('FAILED...', error);
-            alert('There was an error sending your message. Please try again later.');
-        });
-    });
-
-    // Show the contact modal when the button is clicked
-    $('#contactButton').on('click', function() {
-        $('#contactModal').modal('show');
-    });
-
-    // Handle sending the message
-    $('#sendMessage').on('click', function() {
-        alert('Your message has been sent!');
-        $('#contactModal').modal('hide');
-        $('#contact-form')[0].reset(); // Reset the form
-    });
-
-    // Optional: Handle click event for the contact button
-    $('#contactButton').on('click', function() {
-        alert('Please fill in your details, and I will get back to you shortly!'); 
-    });
-
-    // Smooth scrolling for navigation links
-    $('.nav-link').on('click', function(event) {
-        event.preventDefault(); // Prevent default anchor click behavior
-        var target = $(this).attr('href'); // Get the target section
-        $('html, body').animate({
-            scrollTop: $(target).offset().top // Scroll to the target section
-        }, 800); // Duration of the scroll
-    });
+    var form = document.getElementById("my-form");
+    
+    async function handleSubmit(event) {
+        event.preventDefault(); // Prevent the default form submission
+        var status = document.getElementById("my-form-status");
+        var data = new FormData(event.target);
+        
+        try {
+            const response = await fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            if (response.ok) {
+                status.innerHTML = "Thanks for your submission!";
+                form.reset();
+            } else {
+                const data = await response.json();
+                if (data.errors) {
+                    status.innerHTML = data.errors.map(error => error.message).join(", ");
+                } else {
+                    status.innerHTML = "Oops! There was a problem submitting your form.";
+                }
+            }
+        } catch (error) {
+            status.innerHTML = "Oops! There was a problem submitting your form.";
+        }
+    }
+    
+    form.addEventListener("submit", handleSubmit);
 });
