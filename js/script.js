@@ -19,10 +19,9 @@ $(document).ready(function() {
     });
 
     // Project link handling
-    $('a').on('click', function(event) {
+    $('.project-link').on('click', function(event) {
         event.preventDefault(); // Prevent the default link behavior
         let url = 'https://salwync.github.io/wellness-recipe-collection/';
-        // Use the URL directly instead of selecting it
         window.location.href = url; // Redirect to the URL
     });
 
