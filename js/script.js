@@ -18,6 +18,14 @@ $(document).ready(function() {
         }
     });
 
+    // Project link handling
+    $('a').on('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        let url = 'https://salwync.github.io/wellness-recipe-collection/';
+        // Use the URL directly instead of selecting it
+        window.location.href = url; // Redirect to the URL
+    });
+
     // Dark/Light Mode Toggle
     $('#theme-toggle').on('click', function() {
         $('body').toggleClass('dark-mode'); // Toggle dark mode class
@@ -45,11 +53,11 @@ $(document).ready(function() {
     });
 
     // Contact Form Submission
-    var form = document.getElementById("my-form");
+    var form = document.getElementById("contact-form");
     
     async function handleSubmit(event) {
         event.preventDefault(); // Prevent the default form submission
-        var status = document.getElementById("my-form-status");
+        var status = document.getElementById("form-status");
         var data = new FormData(event.target);
         
         try {
@@ -76,5 +84,7 @@ $(document).ready(function() {
         }
     }
     
-    form.addEventListener("submit", handleSubmit);
+    if (form) {
+        form.addEventListener("submit", handleSubmit);
+    }
 });
